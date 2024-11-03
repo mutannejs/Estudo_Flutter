@@ -4,11 +4,11 @@ import 'package:atividade_01/page_views/home_page.dart';
 import 'package:flutter/material.dart';
 
 main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
-  MyApp({super.key});
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -62,6 +62,17 @@ class _BaseMyAppState extends State<BaseMyApp> {
       );
     }
 
+    changePage(int indexPage) {
+      _pageController.animateToPage(
+        indexPage,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeIn
+      );
+      setState(() {
+        _indexPage = indexPage;
+      });
+    }
+
     return Scaffold(
         appBar: AppBar(
           elevation: 1,
@@ -87,23 +98,14 @@ class _BaseMyAppState extends State<BaseMyApp> {
         body: PageView(
           controller: _pageController,
           children: [
-            HomePage(changeColor: widget.changeColor),
-            const FlutterPage(),
-            const DartPage()
+            HomePage(changeColor: widget.changeColor, changePage: changePage),
+            FlutterPage(changePage: changePage),
+            DartPage(changePage: changePage)
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _indexPage,
-          onTap: (indexPage) {
-            _pageController.animateToPage(
-              indexPage,
-              duration: const Duration(milliseconds: 200),
-              curve: Curves.easeIn
-            );
-            setState(() {
-              _indexPage = indexPage;
-            });
-          },
+          onTap: changePage,
           items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.color_lens_rounded),
@@ -117,7 +119,8 @@ class _BaseMyAppState extends State<BaseMyApp> {
               icon: Icon(Icons.language_rounded),
               label: 'Dart'
             ),
-          ]),
+          ]
+        ),
       );
   }
 }

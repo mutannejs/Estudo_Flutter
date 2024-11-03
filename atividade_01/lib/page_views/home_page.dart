@@ -3,8 +3,9 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 class HomePage extends StatelessWidget {
   final ValueChanged<Color> changeColor;
+  final void Function(int) changePage;
 
-  const HomePage({super.key, required this.changeColor});
+  const HomePage({super.key, required this.changeColor, required this.changePage});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,7 @@ class HomePage extends StatelessWidget {
                 child: ElevatedButton.icon(
                   icon: const Icon(Icons.navigate_next_rounded),
                   label: const Text('Flutter'),
-                  onPressed: () {},
+                  onPressed: () => changePage(1),
                 ),
               ),
             ]
