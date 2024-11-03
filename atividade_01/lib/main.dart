@@ -79,6 +79,7 @@ class _BaseMyAppState extends State<BaseMyApp> {
           title: Text(
             'Sobre Flutter',
             style: TextStyle(
+              fontFamily: 'Times',
               fontWeight: FontWeight.bold,
               fontSize: 30,
               color: Theme.of(context).primaryColor
