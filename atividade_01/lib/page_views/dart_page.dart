@@ -11,7 +11,7 @@ class DartPage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image.asset('lib/assets/dart.jpg'),
+          Image.asset('assets/dart.jpg'),
           Container(
             padding: const EdgeInsets.fromLTRB(40, 10, 40, 10),
             child: const Text(
