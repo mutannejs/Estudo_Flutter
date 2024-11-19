@@ -1,1 +1,0 @@
- /home/mutanne/Documents/talp_flutter/atividade_02/.dart_tool/flutter_build/575e8fb375d5e075ebea73e707b87105/native_assets.yaml: 

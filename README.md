@@ -1,8 +1,13 @@
-# atividade_02
+# Estudo Flutter
 
-A new Flutter project.
+Para rodar algum programa, entre na paste dele e execute:
 
-## Getting Started
+```
+flutter create --platforms=windows,macos,linux,ios,android,web . # altere esse comando para incluir/excluir as plataformas que você desejar
+flutter pub get
+```
+
+## Flutter - Getting Started
 
 This project is a starting point for a Flutter application.
 
