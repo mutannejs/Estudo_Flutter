@@ -1,4 +1,5 @@
 import 'package:atividade_02/change_interface.dart';
+import 'package:atividade_02/posts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -18,11 +19,13 @@ class _HomePageState extends ConsumerState<HomePage> {
         elevation: 1,
       ),
       body: const SingleChildScrollView(
-        child: const Column(
+        child: Column(
           children: [
             SizedBox(height: 20),
             ChangeInterface(),
             SizedBox(height: 20),
+            Divider(),
+            WidgetPosts(),
           ],
         ),
       ),
