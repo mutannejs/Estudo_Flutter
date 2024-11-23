@@ -1,5 +1,5 @@
 import 'package:atividade_02/change_interface.dart';
-import 'package:atividade_02/posts.dart';
+import 'package:atividade_02/widget_posts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

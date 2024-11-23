@@ -1,4 +1,5 @@
 import 'package:atividade_02/home_page.dart';
+import 'package:atividade_02/post_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -47,6 +48,7 @@ class MyApp extends ConsumerWidget {
       ),
       routes: {
         '/': (_) => const HomePage(),
+        '/post': (_) => const PostPage(),
       },
       initialRoute: '/',
     );

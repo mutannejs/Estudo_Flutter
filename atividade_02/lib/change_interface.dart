@@ -142,29 +142,32 @@ class ChangeInterface extends ConsumerStatefulWidget {
 class _ChangeInterfaceState extends ConsumerState<ChangeInterface> {
   @override
   Widget build(BuildContext context) {
-    return Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-      const MenuAnchorColors(),
-      const SizedBox(width: 20),
-      const MenuAnchorFonts(),
-      const SizedBox(width: 20),
-      IconButton.filledTonal(
-          onPressed: () {
-            var value = ref.read(fontSizeProvider.notifier).state += .1;
-            getSharedPreferences().then((onValue) {
-              onValue.setDouble('fontSizeProvider', value);
-            });
-          },
-          icon: const Icon(Icons.add_rounded)),
-      const SizedBox(width: 20),
-      IconButton.filledTonal(
-          onPressed: () async {
-            var value = ref.read(fontSizeProvider.notifier).state -= .1;
-            getSharedPreferences().then((prefs) {
-              prefs.setDouble('fontSizeProvider', value);
-            });
-          },
-          icon: const Icon(Icons.remove_rounded)),
-      const SizedBox(width: 20),
-    ]);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        const MenuAnchorColors(),
+        const SizedBox(width: 20),
+        const MenuAnchorFonts(),
+        const SizedBox(width: 20),
+        IconButton.filledTonal(
+            onPressed: () {
+              var value = ref.read(fontSizeProvider.notifier).state += .1;
+              getSharedPreferences().then((onValue) {
+                onValue.setDouble('fontSizeProvider', value);
+              });
+            },
+            icon: const Icon(Icons.add_rounded)),
+        const SizedBox(width: 20),
+        IconButton.filledTonal(
+            onPressed: () async {
+              var value = ref.read(fontSizeProvider.notifier).state -= .1;
+              getSharedPreferences().then((prefs) {
+                prefs.setDouble('fontSizeProvider', value);
+              });
+            },
+            icon: const Icon(Icons.remove_rounded)),
+        const SizedBox(width: 20),
+      ]
+    );
   }
 }
