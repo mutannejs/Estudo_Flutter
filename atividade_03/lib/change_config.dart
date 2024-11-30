@@ -80,14 +80,21 @@ class _CheckboxFieldState extends ConsumerState<CheckboxField> {
     return Row(
       children: [
         Checkbox(
-          value:  ref.read(configProvider).fontStyle[widget.index],
+          value: ref.read(configProvider).fontStyle[widget.index],
           onChanged: (value) {
             setState(() {
               ref.read(configProvider.notifier).state.fontStyle[widget.index] = value!;
             });
           }
         ),
-        widget.label
+        InkWell(
+          onTap: () {
+            setState(() {
+              ref.read(configProvider.notifier).state.fontStyle[widget.index] = !ref.read(configProvider).fontStyle[widget.index];
+            });
+          },
+          child: widget.label
+        )
       ],
     );
   }
@@ -120,6 +127,74 @@ class _ChangeFontStyleState extends ConsumerState<ChangeFontStyle> {
           label: Text('underline', style: TextStyle(decoration: TextDecoration.underline))
         ),
       ],
+    );
+  }
+}
+
+
+class ChangeFontFamily extends ConsumerStatefulWidget {
+  const ChangeFontFamily({super.key});
+
+  @override
+  ConsumerState<ChangeFontFamily> createState() => _ChangeFontFamilyState();
+}
+
+class _ChangeFontFamilyState extends ConsumerState<ChangeFontFamily> {
+  var _chipSelected = false;
+
+  void toggleSelected() {
+    setState(() {
+      _chipSelected = !_chipSelected;
+      if (_chipSelected){
+        ref.read(configProvider.notifier).state.fontFamily = 'Mono';
+      } else {
+        ref.read(configProvider.notifier).state.fontFamily = 'Ubuntu';
+      }}
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        InputChip(
+          selected: _chipSelected,
+          onPressed: toggleSelected,
+          label: const Text('Mono', style: TextStyle(fontFamily: 'Mono'))
+        )
+      ],
+    );
+  }
+}
+
+class ChangeConfig extends StatefulWidget {
+  final void Function() rebuild;
+
+  const ChangeConfig(this.rebuild, {super.key});
+
+  @override
+  State<ChangeConfig> createState() => _ChangeConfigState();
+}
+
+class _ChangeConfigState extends State<ChangeConfig> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+      padding: const EdgeInsets.fromLTRB(10, 30, 10, 30),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const ChangeColor(),
+          const ChangeFontSize(),
+          const ChangeFontStyle(),
+          const ChangeFontFamily(),
+          ElevatedButton(
+            onPressed: () => widget.rebuild(),
+            child: const Text('Aplicar')
+          ),
+        ]
+      ),
     );
   }
 }

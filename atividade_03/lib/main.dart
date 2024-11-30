@@ -4,22 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class Config {
-  Color color;
-  double fontSize;
+  Color color = Colors.deepPurple;
+  double fontSize = 16;
   List<bool> fontStyle = [false, false, false];
-
-  Config({
-    required this.color,
-    required this.fontSize
-  });
+  String fontFamily = 'Arial';
 }
 
-var configProvider = StateProvider(
-  (ref) => Config(
-    color: Colors.deepPurple,
-    fontSize: 16.0
-  )
-);
+var configProvider = StateProvider( (ref) => Config() );
 
 void main() async {
   runApp(const ProviderScope(child: MyApp()));
@@ -51,23 +42,58 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  rebuild() {
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    var sizeCanva = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Appainter'),
+        title: const Text('Appainter?'),
       ),
-      body: Column(
-        children: [
-          ChangeColor(),
-          ChangeFontSize(),
-          ChangeFontStyle(),
-          ElevatedButton(onPressed: ()=> setState((){}), child: Text('Aplicar')),
-          Divider(height: 20,),
-          ResultExample()
-        ]
-      ),
+      body: SingleChildScrollView(
+        child: sizeCanva.width < 900
+          ? Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
+                child: ChangeConfig(rebuild)
+              ),
+              // ignore: prefer_const_constructors
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10, 10, 10, 30),
+                // ignore: prefer_const_constructors
+                child: ResultExample()
+              )
+            ]
+          )
+          : Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 30, 10, 30),
+                  child: ChangeConfig(rebuild)
+                )
+              ),
+              // ignore: prefer_const_constructors
+              Expanded(
+                flex: 1,
+                // ignore: prefer_const_constructors
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 30, 10, 30),
+                  // ignore: prefer_const_constructors
+                  child: ResultExample()
+                )
+              )
+            ]
+          )
+      )
     );
   }
 }
