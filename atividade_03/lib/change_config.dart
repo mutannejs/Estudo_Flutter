@@ -181,7 +181,7 @@ class _ChangeConfigState extends State<ChangeConfig> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(border: Border.all(color: Colors.black)),
-      padding: const EdgeInsets.fromLTRB(10, 30, 10, 30),
+      padding: const EdgeInsets.fromLTRB(10, 30, 10, 36),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

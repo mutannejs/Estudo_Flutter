@@ -22,14 +22,10 @@ class MyApp extends ConsumerWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return const MaterialApp(
+      title: 'Appainter?',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: ref.watch(configProvider).color),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(),
+      home: MyHomePage(),
     );
   }
 }
@@ -42,7 +38,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  rebuild() {
+  void rebuild() {
     setState(() {});
   }
 
