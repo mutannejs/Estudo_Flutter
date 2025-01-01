@@ -1,0 +1,12 @@
+Trabalho individual 
+
+O trabalho consiste de uma interface que contenha os seguintes Widgets, classes e/ou as seguintes funcionalidades:
+
+. Use o pacote go_router com ShellRouter.
+. Use FutureProvider.
+. Use TabBar e TabBarView para criar um menu de opções. As opções em sim podem ser quaisquer.
+. Use ou crie dois Expandable FAB em uma mesma página. 
+
+Como é impossível eu corrigir todos os trabalhos e conferir tudo, vou fazer um questionário para vocês se auto-avaliarem. Durante a aula, vejo "pessoalmente" os trabalhos de alguns grupos (sorteados aleatoriamente).
+
+No AVA, entreguem apenas um zip (não RAR, não outra coisa) com os diretórios 'assets' e 'lib'. Coloque o seu nome completo no nome do arquivo, sem acentos.
